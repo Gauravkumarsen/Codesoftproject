@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -6,13 +7,14 @@
     border: none;
     scroll-behavior: smooth;
     outline: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 :root{
-    --bg-color: #851731;
-    --sbg-color: #6f0e25;
-    --text-color: #fff;
-    --main-color: goldenrod;
+    --bg-color: #040929;
+    --sbg-color: #37275a;
+    --text-color: #ffffff;
+    --main-color: rgb(196, 213, 13);
 }
 html {
     overflow-x: hidden;
@@ -53,7 +55,8 @@ section{
     margin-left: 4rem;
     transition: .4s;
 }
-.navigationbar a:hover, .navigationbar {
+.navigationbar a:hover, 
+.navigationbar a.active{
     color: var(--main-color);
 }
 #menu-icon{
@@ -69,7 +72,20 @@ section{
 .home-img img{
     width: 35vw;
     border-radius: 50%;
-    box-shadow: 10px 10px 10px 10px;
+    box-shadow: 10px 10px 50px 3px rgb(17, 228, 228);
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+    0%{
+      transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-3rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 .home-content h3{
     font-size: 3.2rem;
@@ -79,7 +95,7 @@ section{
     margin-bottom: 2rem;
 }
 span{
-    color: goldenrod;
+    color: rgba(224, 146, 12, 0.912);
 }
 
 .home-content h1{
@@ -149,10 +165,14 @@ line-height: 1.2;
     font-size: 1.5rem;
     margin: 2rem 0 3rem;
 }
+
+.project-box{
+    border: 0.5rem solid rgb(210, 177, 58);
+}
 .project-box img{
     opacity: 0.8;
     width: 100%;
-    height: 45vh;
+    height: 35vh;
     transition: 0.5s ease;
 }
 .project{
@@ -189,6 +209,7 @@ line-height: 1.2;
     padding: .4rem;
     transform: translateY(100%);
     transition: 0.5s ease;
+    
 }
 .project-box:hover img{
     transform: scale(1.1) ;
@@ -266,7 +287,7 @@ margin:.7rem 0
     font-size: 1.6rem;
     font-weight: 600;
 }
-.footer-icontop i{
+.footer-icontop a{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -297,10 +318,111 @@ box-shadow: 0 0 1rem var(--main-color);
     section{
         padding: 10rem 3% 2rem;
     }
+    .project{
+        padding-bottom: 7rem;
+    }
+    .contact{
+        min-height: auto;
+    }
     .footer{
-        padding: 2rem 3%;
+        padding: 1.5rem 3%;
     }
 }
+
+@media (max-width: 768px){
+    #menu-icon{
+        display:block;
+    }
+        .navigationbar{
+            position: absolute;
+            top:100%;
+            left:0;
+            width: 100%;
+            padding: 1rem 3%;
+            background : var(--bg-color);
+            border-top: .1rem solid rgba(0,0,0,.2);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+            display: none;
+
+        }
+
+        .navigationbar.active{
+                   display: block;
+        }
+        .navigationbar a {
+            display: block;
+            font-size: 2rem;
+            margin: 3rem 0;
+        }
+        .home{
+            flex-direction:column;
+        }
+
+        .home-content h3{
+            font-size: 2.6rem;
+        }
+
+        .home-content h1{
+            font-size: 5rem;
+        }
+
+        .home-img img{
+            width: 65vw;
+            margin-top: 4rem;
+        }
+        .about-image img{
+            width: 65vw;
+            margin-top: 4rem;
+        }
+
+        .about{
+            flex-direction: column-reverse;
+        }
+        /* .project-box{
+            width: auto
+            
+        } */
+        .project h2 {
+            margin-bottom: 3rem;
+        }
+        .project-container{
+            grid-template-columns:repeat(2,1fr) ;
+        }
+    }
+
+    @media (max-width: 617px){
+        .project-container{
+            grid-template-columns: repeat(1,1fr);
+        }
+    }
+
+    @media (max-width: 450px){
+           html{
+            font-size: 50%;
+           }
+
+           .contact form .input-box input{
+            width: 100%;
+           }
+    }
+
+    @media (max-width: 365px){
+        .home-img  img
+{
+    width: 90vw;
+}   
+      .about-image img{
+        width: 90vw;
+      }
+      .footer{
+        flex-direction: column-reverse;
+      }
+    .footer p{
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .navigationbar {
       flex-direction: column;
@@ -310,7 +432,64 @@ box-shadow: 0 0 1rem var(--main-color);
     .navigationbar a {
       padding: 10px;
       margin: 5px;
+     
     }
   }
     
-    
+    /* Light mode (default) */
+body.light-mode {
+    .header{
+        background-color: #117f90;
+    }
+    .home{
+  background-color: #b6edf6;
+  color:  #040929;}
+
+  .about{
+    background-color: #8fbac1;
+    color:  #040929;
+  }
+  .project{
+    background-color: #b6edf6;
+    color:  #040929;}
+    .contact{
+        background-color: #8fbac1;
+        color:  #040929;
+      }
+      .home-img img{
+      box-shadow: 10px 10px 50px 3px rgb(9, 88, 88);}
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: var(--bg-color);
+  color: #ffffff;
+}
+
+/* Additional styling for the theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.theme-toggle i {
+  transition: color 0.3s;
+}
+
+/* Adjust the toggle button's color based on the theme */
+body.light-mode .theme-toggle i {
+  color: #000000;
+}
+
+body.dark-mode .theme-toggle i {
+  color: #ffffff;
+}
+
+
+
+
+
+
